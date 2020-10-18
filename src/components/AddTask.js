@@ -11,7 +11,8 @@ function AddTask({tasks,setTasks,setAllTasks,status}) {
         if(name !== '') {
             const guid = uuid().toString();
             
-            if(status!=="done") {
+            console.log(status)
+            if(status!=="completed") {
             setTasks((tasks) =>
                 ([...tasks, {id: guid, name: name, done: false}]));
             }

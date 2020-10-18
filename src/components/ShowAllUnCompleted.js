@@ -3,16 +3,16 @@ import { v4 as uuid } from 'uuid';
 import {Button, Col, Form, Row} from "react-bootstrap";
 import {useSelector} from 'react-redux';
 
-function RemoveAllChecked({allTasks,tasks,setTasks,setStatus}){
+function ShowAllUnCompleted({allTasks,tasks,setTasks,setStatus}){
 
-    function removeAllChecked(){
+    function showAllUnCompleted(){
 
         let task = allTasks.filter(
             todo=> todo.done !== true
         );
 
         setTasks(task);     
-        setStatus("done");       
+        setStatus("uncompleted");       
     }
 
     return(
@@ -22,7 +22,7 @@ function RemoveAllChecked({allTasks,tasks,setTasks,setStatus}){
                     <Form.Label>Show Uncompleted</Form.Label>
                 </Row>
                 <Row className={"justify-content-center"}>
-                    <Button variant="primary" type="remove" onClick={() => removeAllChecked()}>
+                    <Button variant="primary" type="remove" onClick={() => showAllUnCompleted()}>
                         Show Uncompleted
                     </Button>
                 </Row>
@@ -31,4 +31,4 @@ function RemoveAllChecked({allTasks,tasks,setTasks,setStatus}){
     );
 }
 
-export default RemoveAllChecked;
+export default ShowAllUnCompleted;

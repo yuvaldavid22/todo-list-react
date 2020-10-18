@@ -1,34 +1,36 @@
 import React,{useCallback,useState,useRef} from 'react';
 import Task from './Task'
 
-function TodoList({tasks, setAllTasks, setTasks, allTasks}){
+function TodoList({tasks, setAllTasks, setTasks, allTasks,status}){
     const allTasksRef = useRef();
     const tasksRef = useRef();
-    allTasksRef.current = allTasks
-    tasksRef.current=tasks
+    const statusRef = useRef();
+    allTasksRef.current = allTasks;
+    tasksRef.current=tasks;
+    statusRef.current=status;
 
     const toggleTask = useCallback((taskId) => {
         allTasks = allTasksRef.current;
         tasks = tasksRef.current;
+        status = statusRef.current;
+
         let toggledTasks = tasks.map(
             task => {
                 if(task.id === taskId){
                     task.done = !task.done;
                 }
-                return task;
-            }
-        )
+                if(status==="all")
+                    return task;
+                if(status==="completed" && task.done===true)
+                    return task;
+                if(status==="uncompleted" && task.done===false)
+                    return task;
 
-        let toggledAllTasks = allTasks.map(
-            task => {
-                if(task.id === taskId && !toggledTasks.includes(task)){
-                    task.done = !task.done;
-                }
-                return task;
+                return;
             }
         )
         
-        setAllTasks(toggledAllTasks)
+        toggledTasks = toggledTasks.filter(task => task!==undefined)
         setTasks(toggledTasks);
     },)
 
