@@ -1,0 +1,40 @@
+import React, {useContext, useRef, useCallback} from "react";
+import {Col, Row} from "react-bootstrap";
+
+function Task(props)
+{
+    //const [todo, setTodo] = useContext(TasksContext);
+    const toggleTask = useCallback(() => {
+        props.toggleTask(props.id);
+    }, [props.id]);
+
+    function removeTask(id) {
+
+        /*setTodo(prevState => {
+            const state = {...prevState};
+            delete state[id];
+
+            return state;
+        });*/
+    }
+    return (
+        <Row >
+            <Col md={8}>
+                <Row >
+                    <Col md={3}>
+                        <input type="checkbox" checked={props.done}
+                               onChange={toggleTask} className={"task-checkbox"}/>
+                    </Col>
+                    <Col md={6}>
+                        {props.name}
+                    </Col>
+                    <Col md={3}>
+                        <span className="material-icons" onClick={() => removeTask(props.id)}></span>
+                    </Col>
+                </Row>
+            </Col>
+        </Row>
+    );
+}
+
+export default Task;
