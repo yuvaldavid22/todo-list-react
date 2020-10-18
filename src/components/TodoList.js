@@ -16,9 +16,10 @@ function TodoList({tasks, setAllTasks, setTasks, allTasks,status}){
 
         let toggledTasks = tasks.map(
             task => {
-                if(task.id === taskId){
+                if(task.id === taskId) {
                     task.done = !task.done;
                 }
+
                 if(status==="all")
                     return task;
                 if(status==="completed" && task.done===true)
@@ -31,7 +32,20 @@ function TodoList({tasks, setAllTasks, setTasks, allTasks,status}){
         )
         
         toggledTasks = toggledTasks.filter(task => task!==undefined)
+
+        let toggledAllTasks = allTasks.map(
+            task => {
+                if(task.id === taskId && !toggledTasks.includes(task)){
+                    task.done = !task.done;
+                }
+                return task;
+            }
+        )
+
         setTasks(toggledTasks);
+        setAllTasks(toggledAllTasks);  
+        
+        console.log(allTasks);
     },)
 
     const todoList = tasks.length ? (

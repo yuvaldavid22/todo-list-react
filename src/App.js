@@ -11,6 +11,7 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [allTasks, setAllTasks] = useState([]);
   const [status, setStatus] = useState("all");
+  
   return (
     <div className="App">
       <header>
