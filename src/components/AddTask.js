@@ -1,17 +1,19 @@
 import React from "react";
 import { v4 as uuid } from 'uuid';
 import {Button, Col, Form, Row} from "react-bootstrap";
+import {addTask} from '../actions';
 import {useDispatch,useSelector} from 'react-redux';
 
 
 function AddTask({tasks,setTasks,setAllTasks,status}) {
     const inputText = React.useRef(null);
+    const dispatch = useDispatch();
+    const vaxi = useSelector(state => state.TaskReducer)
 
-    function addTask(name) {
+    function addTaskToState(name) {
         if(name !== '') {
             const guid = uuid().toString();
             
-            console.log(status)
             if(status!=="completed") {
             setTasks((tasks) =>
                 ([...tasks, {id: guid, name: name, done: false}]));
@@ -20,7 +22,9 @@ function AddTask({tasks,setTasks,setAllTasks,status}) {
             setAllTasks((tasks) =>
                 ([...tasks, {id: guid, name: name, done: false}]));
             
-            
+            dispatch(addTask(guid,name));
+            console.log(vaxi)
+
             inputText.current.value = '';
         }        
     }
@@ -35,7 +39,7 @@ function AddTask({tasks,setTasks,setAllTasks,status}) {
                     <input ref={inputText} />
                 </Row>
                 <Row className={"justify-content-center"}>
-                    <Button variant="primary" type="submit" onClick={() => addTask(inputText.current.value)}>
+                    <Button variant="primary" type="submit" onClick={() => addTaskToState(inputText.current.value)}>
                         Submit
                     </Button>
                 </Row>

@@ -1,5 +1,6 @@
 import React,{useCallback,useState,useRef} from 'react';
 import Task from './Task'
+import {useDispatch,useSelector} from 'react-redux';
 
 function TodoList({tasks, setAllTasks, setTasks, allTasks,status}){
     const allTasksRef = useRef();
@@ -8,6 +9,9 @@ function TodoList({tasks, setAllTasks, setTasks, allTasks,status}){
     allTasksRef.current = allTasks;
     tasksRef.current=tasks;
     statusRef.current=status;
+    const vaxi = useSelector(state => state.TaskReducer)
+    const dispatch = useDispatch();
+
 
     const toggleTask = useCallback((taskId) => {
         allTasks = allTasksRef.current;
@@ -49,7 +53,7 @@ function TodoList({tasks, setAllTasks, setTasks, allTasks,status}){
     },)
 
     const todoList = tasks.length ? (
-        tasks.map(todo=> (
+        vaxi.map(todo=> (
             <Task toggleTask={toggleTask} name={todo.name} key={todo.id} id={todo.id} done={todo.done} />
         ))
     ) : (
