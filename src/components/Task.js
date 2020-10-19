@@ -1,30 +1,12 @@
-import React, {useCallback} from "react";
-import {Col, Row} from "react-bootstrap";
+import React from "react";
 
-function Task(props)
-{
-    const toggleTask = useCallback(() => {
-        props.toggleTask(props.id);
-    }, [props.id]);
-
+const Task = (props) => {
     return (
-        <Row >
-            <Col md={8}>
-                <Row >
-                    <Col md={3}>
-                        <input type="checkbox" checked={props.done}
-                               onChange={toggleTask} className={"task-checkbox"}/>
-                    </Col>
-                    <Col md={6}>
-                        {props.name}
-                    </Col>
-                    <Col md={3}>
-                        <span className="material-icons"></span>
-                    </Col>
-                </Row>
-            </Col>
-        </Row>
-    );
+        <div>
+            <input type="checkbox" checked={props.done} onChange={() => props.onChange(props.id)} className={"task-checkbox"}/>
+            <p>{props.name}</p>
+        </div>
+    )
 }
 
 export default Task;
