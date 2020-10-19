@@ -1,22 +1,12 @@
-import React, {useContext, useRef, useCallback} from "react";
+import React, {useCallback} from "react";
 import {Col, Row} from "react-bootstrap";
 
 function Task(props)
 {
-    //const [todo, setTodo] = useContext(TasksContext);
     const toggleTask = useCallback(() => {
         props.toggleTask(props.id);
     }, [props.id]);
 
-    function removeTask(id) {
-
-        /*setTodo(prevState => {
-            const state = {...prevState};
-            delete state[id];
-
-            return state;
-        });*/
-    }
     return (
         <Row >
             <Col md={8}>
@@ -29,7 +19,7 @@ function Task(props)
                         {props.name}
                     </Col>
                     <Col md={3}>
-                        <span className="material-icons" onClick={() => removeTask(props.id)}></span>
+                        <span className="material-icons"></span>
                     </Col>
                 </Row>
             </Col>

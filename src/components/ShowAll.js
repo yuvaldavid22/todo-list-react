@@ -1,7 +1,5 @@
 import React from "react";
-import { v4 as uuid } from 'uuid';
 import {Button, Col, Form, Row} from "react-bootstrap";
-import {useSelector} from 'react-redux';
 
 function ShowAll({setTasks,allTasks,setStatus}){
 

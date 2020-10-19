@@ -43,9 +43,7 @@ function TodoList({tasks, setAllTasks, setTasks, allTasks,status}){
         )
 
         setTasks(toggledTasks);
-        setAllTasks(toggledAllTasks);  
-        
-        console.log(allTasks);
+        setAllTasks(toggledAllTasks);          
     },)
 
     const todoList = tasks.length ? (

@@ -1,8 +1,6 @@
 import React from "react";
 import { v4 as uuid } from 'uuid';
 import {Button, Col, Form, Row} from "react-bootstrap";
-import {useDispatch,useSelector} from 'react-redux';
-
 
 function AddTask({tasks,setTasks,setAllTasks,status}) {
     const inputText = React.useRef(null);
