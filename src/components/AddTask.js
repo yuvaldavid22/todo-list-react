@@ -23,7 +23,6 @@ function AddTask({tasks,setTasks,setAllTasks,status}) {
                 ([...tasks, {id: guid, name: name, done: false}]));
             
             dispatch(addTask(guid,name));
-            console.log(vaxi)
 
             inputText.current.value = '';
         }        

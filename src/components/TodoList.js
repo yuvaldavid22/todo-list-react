@@ -1,6 +1,5 @@
 import React,{useCallback,useState,useRef} from 'react';
 import Task from './Task'
-import {useDispatch,useSelector} from 'react-redux';
 
 function TodoList({tasks, setAllTasks, setTasks, allTasks,status}){
     const allTasksRef = useRef();
@@ -9,9 +8,6 @@ function TodoList({tasks, setAllTasks, setTasks, allTasks,status}){
     allTasksRef.current = allTasks;
     tasksRef.current=tasks;
     statusRef.current=status;
-    const vaxi = useSelector(state => state.TaskReducer)
-    const dispatch = useDispatch();
-
 
     const toggleTask = useCallback((taskId) => {
         allTasks = allTasksRef.current;
@@ -20,10 +16,9 @@ function TodoList({tasks, setAllTasks, setTasks, allTasks,status}){
 
         let toggledTasks = tasks.map(
             task => {
-                if(task.id === taskId) {
+                if(task.id === taskId){
                     task.done = !task.done;
                 }
-
                 if(status==="all")
                     return task;
                 if(status==="completed" && task.done===true)
@@ -37,6 +32,7 @@ function TodoList({tasks, setAllTasks, setTasks, allTasks,status}){
         
         toggledTasks = toggledTasks.filter(task => task!==undefined)
 
+        console.log(toggledTasks)
         let toggledAllTasks = allTasks.map(
             task => {
                 if(task.id === taskId && !toggledTasks.includes(task)){
@@ -45,15 +41,13 @@ function TodoList({tasks, setAllTasks, setTasks, allTasks,status}){
                 return task;
             }
         )
-
-        setTasks(toggledTasks);
-        setAllTasks(toggledAllTasks);  
         
-        console.log(allTasks);
+        setAllTasks(toggledAllTasks)
+        setTasks(toggledTasks);
     },)
 
     const todoList = tasks.length ? (
-        vaxi.map(todo=> (
+        tasks.map(todo=> (
             <Task toggleTask={toggleTask} name={todo.name} key={todo.id} id={todo.id} done={todo.done} />
         ))
     ) : (

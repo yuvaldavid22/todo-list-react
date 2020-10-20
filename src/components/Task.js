@@ -9,7 +9,6 @@ function Task(props)
     const vaxi = useSelector(state => state.TaskReducer)
 
     function toggleTaskInState() {    
-        console.log(props.id)
         dispatch(toggleTask(props.id));
         console.log(vaxi)
     }

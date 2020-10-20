@@ -3,7 +3,7 @@ function TaskReducer(state = [],action){
         case 'ADD_TASK':
             return [...state,{id: action.id, name: action.name, done: false}]
         case 'DO_TASK':
-            state.map(task =>{
+            return state.map(task =>{
                 if(task.id === action.id){
                     task.done = !task.done;
                 }
