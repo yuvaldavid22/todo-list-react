@@ -3,7 +3,10 @@ import { connect } from 'react-redux'
 import { addTask } from '../actions/actions'
 import { v4 as uuid } from 'uuid';
 
-
+const mapStateToProps = (state, ownProps) => {
+    return {
+  }
+}
 let AddTask = ({ dispatch }) => {
     let input
   
@@ -31,6 +34,6 @@ let AddTask = ({ dispatch }) => {
       </div>
     )
   }
-  AddTask = connect()(AddTask)
+  AddTask = connect(mapStateToProps)(AddTask)
   
   export default AddTask

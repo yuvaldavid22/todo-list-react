@@ -3,9 +3,7 @@ import { setVisibilityFilter } from '../actions/actions'
 import FilterButton from '../components/FilterButton'
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("SAdasd")
     return {
-    active: ownProps.filter === state.visibilityFilter
   }
 }
 
