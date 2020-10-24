@@ -2,6 +2,9 @@ import React, {useRef, useState} from 'react';
 import './App.css';
 import {v4 as uuid} from "uuid";
 import TodoList from "./components/TodoList";
+import TasksContainers from "./containers/tasksContainers"
+import AddTask from "./containers/addTaskContainer"
+import FilterSelector from "./components/FilterSelector"
 
 function App() {
     const inputRef = useRef();
@@ -26,7 +29,11 @@ function App() {
             <header>
                 <h1>Todo's List</h1>
             </header>
-            <button onClick={() => setStatus("all")}>show all</button>
+            <FilterSelector></FilterSelector>
+            <AddTask/>
+
+            <TasksContainers></TasksContainers>
+            {/* <button onClick={() => setStatus("all")}>show all</button>
             <button onClick={() => setStatus("completed")}>completed</button>
             <button onClick={() => setStatus("uncompleted")}>uncompleted</button>
             <input ref={inputRef}/>
@@ -35,7 +42,8 @@ function App() {
             }}>
                 Add task
             </button>
-            <TodoList tasks={getRelevantTasks()} toggleTask={toggleTask}/>
+            <TodoList tasks={getRelevantTasks()} toggleTask={toggleTask}/> */}
+            
         </div>
     );
 }

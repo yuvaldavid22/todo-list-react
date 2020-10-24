@@ -1,13 +1,11 @@
 import React from 'react';
 import Task from './Task'
 
-const TodoList = (props) => {
-    const {
-        tasks,
-        toggleTask
-    } = props;
+const TodoList = ({tasks,toggleTask}) => {
+    
     return (
         <div className="todos collection">
+            {console.log(tasks)}
             {tasks.map(task => (
                 <Task
                     key={task.id}
