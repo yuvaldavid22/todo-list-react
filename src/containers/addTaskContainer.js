@@ -1,15 +1,12 @@
-import React, {useRef, useState} from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
-import { addTask } from '../actions/actions'
-import { v4 as uuid } from 'uuid';
+import { addTask } from '../slices/TasksSlice'
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-  }
-}
-let AddTask = ({ dispatch }) => {
+const mapDispatch = { addTask }
+
+let AddTask = ({ addTask  }) => {
     let input
-  
+
     return (
       <div>
         <form
@@ -18,8 +15,7 @@ let AddTask = ({ dispatch }) => {
             if (!input.value.trim()) {
               return
             }
-            const guid = uuid().toString();
-            dispatch(addTask(guid,input.value))
+            addTask(input.value)
     
             input.value = ''
           }}
@@ -34,6 +30,6 @@ let AddTask = ({ dispatch }) => {
       </div>
     )
   }
-  AddTask = connect(mapStateToProps)(AddTask)
+  AddTask = connect(null,mapDispatch)(AddTask)
   
   export default AddTask

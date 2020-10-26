@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
-import TaskReducer from './TaskReducer'
-import visibilityFilterReducer from './visibilityFilterReducer'
+//import TaskReducer from './TaskReducer'
+import tasksReducer from "../slices/TasksSlice"
+import filterReducer from "../slices/FilterSlice"
 
 export default combineReducers({
-    TaskReducer,
-    visibilityFilterReducer
+    TaskReducer : tasksReducer,
+    visibilityFilterReducer : filterReducer
 })

@@ -5,7 +5,6 @@ const TodoList = ({tasks,toggleTask}) => {
     
     return (
         <div className="todos collection">
-            {console.log(tasks)}
             {tasks.map(task => (
                 <Task
                     key={task.id}

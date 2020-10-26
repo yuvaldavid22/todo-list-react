@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleTask } from '../actions/actions'
+import { toggleTask } from '../slices/TasksSlice'
 import TodoList from '../components/TodoList'
 import {VisibilityFilters} from '../actions/actions'
 
@@ -20,12 +20,8 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    toggleTask: id => {
-      dispatch(toggleTask(id))
-    }
-  }
+const mapDispatchToProps = {
+    toggleTask  
 }
 
 const TasksContainers = connect(mapStateToProps, mapDispatchToProps)(TodoList)

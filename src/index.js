@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux'
 import combineReducers from './reducers'
 import { Provider } from 'react-redux'
+import { configureStore } from "@reduxjs/toolkit";
 
 
-const store = createStore(combineReducers)
+const store = configureStore({
+  reducer: combineReducers
+})
 
 ReactDOM.render(
   <Provider store={store}>

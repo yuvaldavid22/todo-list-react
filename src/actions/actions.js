@@ -10,19 +10,3 @@ export const VisibilityFilters = {
   COMPLETED: 'completed',
   UNCOMPLETED: 'uncompleted'
 }
-
-/*
- * action creators
- */
-
-export function addTask(id,name) {
-  return { type: ADD_TASK, id,name }
-}
-
-export function toggleTask(id) {
-  return { type: TOGGLE_TASK, id }
-}
-
-export function setVisibilityFilter(filter) {
-  return { type: SET_VISIBILITY_FILTER, filter }
-}

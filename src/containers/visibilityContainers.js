@@ -1,18 +1,15 @@
 import { connect } from 'react-redux'
-import { setVisibilityFilter } from '../actions/actions'
+import { setFilter } from '../slices/FilterSlice'
 import FilterButton from '../components/FilterButton'
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (ownProps) => {
     return {
+        filter : ownProps.filter
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    onClick: () => {
-      dispatch(setVisibilityFilter(ownProps.filter))
-    }
-  }
+const mapDispatchToProps =  {
+  setFilter
 }
 
 const VisibilityContainers = connect(mapStateToProps, mapDispatchToProps)(FilterButton)
